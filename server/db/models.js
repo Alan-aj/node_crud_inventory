@@ -1,12 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
+dotenv.config({ path: 'config.env' })
 const DB = process.env.MONGO_URI
 
-mongoose.connect(DB,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>{
+// db connection
+mongoose.connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
     console.log("Db connected")
-}).catch((error)=>{
+}).catch((error) => {
     console.log(error.message)
 })

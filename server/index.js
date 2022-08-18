@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import "./db/models";
+import "./db/models.js";
+
 
 const app = express()
 app.use(express.json())
