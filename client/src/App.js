@@ -1,9 +1,14 @@
 import './App.css';
+import Home from './components/home/home';
+import Login from './components/login/login';
+import Register from './components/register/register';
 
 function App() {
   return (
     <div className="App">
-      Hello world
+      <Home />
+      <Login />
+      <Register />
     </div>
   );
 }
