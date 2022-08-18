@@ -8,8 +8,18 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 
-app.get("/", (req, res) => {
-    res.send("My api")
+// Routes
+app.post("/login", (req, res) => {
+    res.send("My api login")
+})
+app.post("/register", (req, res) => {
+    // console.log(req.body)
+    const { name, email, password } = req.body
+    // const user = new User({
+    //     name,
+    //     email,
+    //     password
+    // })
 })
 
 app.listen(9002, () => {

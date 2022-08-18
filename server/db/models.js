@@ -12,4 +12,15 @@ mongoose.connect(DB, {
     console.log("Db connected")
 }).catch((error) => {
     console.log(error.message)
+    console.log("Db not connected")
 })
+
+// schemas
+const userSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    password: String
+})
+
+// models
+const User = new mongoose.model("User", userSchema)
