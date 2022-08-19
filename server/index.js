@@ -14,7 +14,7 @@ app.post("/login", (req, res) => {
     User.findOne({ email: email }, (err, data) => {
         if (data) {
             if (password === data.password) {
-                res.send({ message: "Login successfull", user:data })
+                res.send({ message: "Login successfull", user: data })
             } else {
                 res.send({ message: "Wrong password" })
             }
@@ -44,6 +44,20 @@ app.post("/register", (req, res) => {
             })
         }
     })
+})
+
+app.post("/updateProfile", (req, res) => {
+    const { name, email, newPassword, oldPassword, id } = req.body
+    var user_id = id;
+    User.findByIdAndUpdate(user_id, { name: name, email: email, password: newPassword },
+        function (err, docs) {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                res.send({ message: "Profile updated" })
+            }
+        });
 })
 
 app.listen(9002, () => {
