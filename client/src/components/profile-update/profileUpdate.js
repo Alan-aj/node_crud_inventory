@@ -24,14 +24,14 @@ const ProfileUpdate = (props) => {
 
     const updateProfile =()=> {
         const { name, email, newPassword, oldPassword } = update
-        if (name && email && newPassword && (oldPassword === props.user.password)) {
+        if (name && email && newPassword && (oldPassword === props.user.password) && (newPassword != oldPassword)) {
             axios.post("http://localhost:9002/updateProfile", update)
                 .then(res => {
                     alert(res.data.message)
                     navigate("/")
                 })
         } else {
-            alert("Wrong password")
+            alert("Invalid password")
         }
     }
 
