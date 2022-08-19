@@ -22,5 +22,19 @@ const userSchema = new mongoose.Schema({
     password: String
 })
 
+const categorySchema = new mongoose.Schema({
+    name: String,
+})
+
+const productSchema = new mongoose.Schema({
+    name: String,
+    price: Number,
+    category: [
+        { type: Schema.Types.ObjectId, ref: 'Category' }
+    ]
+})
+
 // models
 export const User = new mongoose.model("User", userSchema)
+export const Category = new mongoose.model("Category", categorySchema)
+export const Product = new mongoose.model("Product", productSchema)
