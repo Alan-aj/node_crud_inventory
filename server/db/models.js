@@ -30,7 +30,7 @@ const productSchema = new mongoose.Schema({
     name: String,
     price: Number,
     category: [
-        { type: Schema.Types.ObjectId, ref: 'Category' }
+        { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
     ]
 })
 

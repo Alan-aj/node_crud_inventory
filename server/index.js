@@ -69,7 +69,24 @@ app.get("/product", (req, res) => {
 })
 
 app.post("/addCategory", (req,res)=>{
-
+    const { name } = req.body
+    // console.log(name)
+    Category.findOne({ name: name }, (err, data) => {
+        if (data) {
+            res.send({ message: "Category already exits" })
+        } else {
+            const category = new Category({
+                name
+            })
+            category.save(err => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    res.send({ message: "Category added successfully" })
+                }
+            })
+        }
+    })
 })
 
 app.post("/addProduct", (req,res)=>{

@@ -19,6 +19,7 @@ const Home = (props) => {
                 <h1>Welcome {props.user.name}</h1>
                 <div className="button" onClick={() => props.setLoginUser({})}>Logout</div>
                 <div className="button" onClick={() => navigate("/profileUpdate")}>Update profile</div>
+                <div className="button" onClick={() => navigate("/addCategory")}>Add category</div>
             </div>
             <div className="product">
                 <Category />
