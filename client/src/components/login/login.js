@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import "./login.css"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
-const Login = () => {
+const Login = ({ setLoginUser }) => {
+    const navigate = useNavigate();
 
     const [user, setUser] = useState({
         email: "",
@@ -21,7 +23,11 @@ const Login = () => {
         const { email, password } = user
         if (email && password) {
             axios.post("http://localhost:9002/login", user)
-                .then(res => alert(res.data.message))
+                .then(res => {
+                    alert(res.data.message)
+                    setLoginUser(res.data.user)
+                    navigate("/", { replace: true })
+                })
         } else {
             alert("Invalid input")
         }
@@ -34,7 +40,7 @@ const Login = () => {
             <input type="password" name="password" value={user.password} placeholder="Enter your Password" onChange={handleChange} ></input>
             <div className="button" onClick={login} >Login</div>
             <div>or</div>
-            <div className="button" >Register</div>
+            <div className="button" onClick={() => navigate("/register")}>Register</div>
         </div>
     )
 }

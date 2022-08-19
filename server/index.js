@@ -39,7 +39,7 @@ app.post("/register", (req, res) => {
                 if (err) {
                     res.send(err)
                 } else {
-                    res.send({ message: "Successfully registered" })
+                    res.send({ message: "Successfully registered, please login now" })
                 }
             })
         }
