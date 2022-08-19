@@ -10,15 +10,39 @@ app.use(cors())
 
 // Routes
 app.post("/login", (req, res) => {
-    res.send("My api login")
+    const { email, password } = req.body
+    User.findOne({ email: email }, (err, data) => {
+        if (data) {
+            if (password === data.password) {
+                res.send({ message: "Login successfull", user:data })
+            } else {
+                res.send({ message: "Wrong password" })
+            }
+        } else {
+            res.send({ message: "User not registered" })
+        }
+    })
 })
 app.post("/register", (req, res) => {
     // console.log(req.body)
     const { name, email, password } = req.body
-    const user = new User({
-        name,
-        email,
-        password
+    User.findOne({ email: email }, (err, data) => {
+        if (data) {
+            res.send({ message: "User already registered" })
+        } else {
+            const user = new User({
+                name,
+                email,
+                password
+            })
+            user.save(err => {
+                if (err) {
+                    res.send(err)
+                } else {
+                    res.send({ message: "Successfully registered" })
+                }
+            })
+        }
     })
 })
 
