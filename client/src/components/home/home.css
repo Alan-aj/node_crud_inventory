@@ -8,7 +8,7 @@
 
 .button {
     background: #1877f2;
-    border: 1px solid #1877f2;
+    border: 1px solid #0c0c0c;
     color: #fff;
     font-size: 1.25rem;
     padding: 0.5rem;
@@ -29,7 +29,7 @@
 .nav h1 {
     float: left;
     margin: 10px;
-
+    font-size: 2rem;
 }
 
 .nav div.button {
@@ -37,9 +37,28 @@
     float: right;
 }
 
+.logout{
+    background: rgb(122, 120, 120);
+}
+
+
 .product {
     display: grid;
     grid-template-columns: auto auto auto;
+    justify-content: center;
     margin-top: 30px;
     margin-left: 30px;
+}
+
+h2{
+    text-align: center;
+    margin: 40px;
+    font-size: 2rem;
+    color: darkred;
+}
+
+@media (max-width: 768px) {
+    .product{
+        grid-template-columns: auto auto;
+    }
 }

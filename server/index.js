@@ -61,14 +61,22 @@ app.post("/updateProfile", (req, res) => {
 })
 
 app.get("/category", (req, res) => {
-    res.send()
+    Category.find({}, function (err, data) {
+        if (data) {
+            // console.log(data)
+            res.send(data)
+        } else {
+            console.log(err)
+        }
+    })
+
 })
 
 app.get("/product", (req, res) => {
     res.send()
 })
 
-app.post("/addCategory", (req,res)=>{
+app.post("/addCategory", (req, res) => {
     const { name } = req.body
     // console.log(name)
     Category.findOne({ name: name }, (err, data) => {
@@ -89,16 +97,40 @@ app.post("/addCategory", (req,res)=>{
     })
 })
 
-app.post("/addProduct", (req,res)=>{
-    
+app.post("/addProduct", (req, res) => {
+
 })
 
-app.post("/updateCategory", (req,res)=>{
-    
+app.post("/updateCategory", (req, res) => {
+    const { name, id } = req.body
+    var user_id = id;
+    Category.findByIdAndUpdate(user_id, { name: name },
+        function (err, docs) {
+            if (docs) {
+                res.send({ message: "Category updated" })
+            }
+            else {
+                console.log(err)
+            }
+        });
 })
 
-app.post("/updateProduct", (req,res)=>{
-    
+app.post("/updateProduct", (req, res) => {
+
+})
+
+app.post("/deleteCategory", (req, res) => {
+    const { id } = req.body
+    Product.deleteMany({ _id: id })
+        .then(Category.deleteOne({ _id: id })
+            .then(function () {
+                res.send({ message: "Category deleted" })
+            }).catch(function (error) {
+                console.log(error);
+            })).catch(function (error) {
+                console.log(error);
+            })
+
 })
 
 app.listen(9002, () => {

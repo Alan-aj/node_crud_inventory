@@ -4,17 +4,20 @@
     align-items: center;
     justify-content:center;
     width: 25vw;
-    height: 20vh;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 0 10px 1px grey;
     background:white;
     margin: 20px;
-    /* position: relative */
+    position: relative;
+}
+
+h1{
+    margin-top: 30px;
 }
 
 .button-cat {
     background: #4C5B5C;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
     color: #fff;
     font-size: 1.25rem;
     padding: 0.5rem;
@@ -22,4 +25,21 @@
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+
+.row{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.edit{
+    background: rgb(72, 138, 7);
+}
+
+.delete{
+    background: rgb(153, 38, 38);
 }

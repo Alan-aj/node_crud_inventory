@@ -1,13 +1,15 @@
 import React, { useState } from "react"
-import "./addCategory.css"
+import "./updateCategory.css"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
-const AddCategory = () => {
+const UpdateCategory = () => {
     const navigate = useNavigate();
 
+    const { id, category } = useParams();
+
     const [data, setUser] = useState({
-        name: ""
+        name: category
     })
 
     const handleChange = e => {
@@ -19,12 +21,12 @@ const AddCategory = () => {
     }
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+    }
 
-    const register = () => {
+    const update = () => {
         const { name } = data
         if (name) {
-            axios.post("http://localhost:9002/addCategory", {name:capitalizeFirstLetter(name)})
+            axios.post("http://localhost:9002/updateCategory", { name: capitalizeFirstLetter(name), id: id })
                 .then(res => {
                     alert(res.data.message)
                     navigate("/")
@@ -36,13 +38,13 @@ const AddCategory = () => {
 
     return (
         <div className="register">
-            <h1 className="head">New category</h1>
+            <h1 className="head">Update category</h1>
             <input type="text" name="name" value={data.name} placeholder="Category name" onChange={handleChange}></input>
-            <div className="button" onClick={register} >Add category</div>
+            <div className="button" onClick={update} >Update</div>
             <div>or</div>
-            <div className="button" onClick={()=>navigate("/")}>Back</div>
+            <div className="button" onClick={() => navigate("/")}>Back</div>
         </div>
     )
 }
 
-export default AddCategory
+export default UpdateCategory
