@@ -87,7 +87,19 @@ app.get("/category", (req, res) => {
 
 app.post("/product", (req, res) => {
     const {id} = req.body
-    Product.find({category:id}, function (err, docs) {
+    Product.find({category:id}, function (err, data) {
+        if (data) {
+            // console.log(data)
+            res.send(data)
+        } else {
+            console.log(err)
+        }
+    })
+})
+
+app.post("/productOne", (req, res) => {
+    const {id} = req.body
+    Product.findOne({_id:id}, function (err, docs) {
         if (err){
             console.log(err);
         }
@@ -156,7 +168,17 @@ app.post("/updateCategory", (req, res) => {
 })
 
 app.post("/updateProduct", (req, res) => {
-
+    const { name, price, id } = req.body
+    var user_id = id;
+    Product.findByIdAndUpdate(user_id, { name: name, price: price },
+        function (err, docs) {
+            if (docs) {
+                res.send({ message: "Product updated" })
+            }
+            else {
+                console.log(err)
+            }
+        });
 })
 
 app.post("/deleteCategory", (req, res) => {

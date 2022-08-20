@@ -18,8 +18,9 @@ const AddCategory = () => {
         })
     }
     function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      }
+        let string1 = string.toLowerCase()
+        return string1.charAt(0).toUpperCase() + string1.slice(1);
+    }
 
     const register = () => {
         const { name } = data

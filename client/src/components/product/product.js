@@ -3,29 +3,7 @@ import "./product.css"
 import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 
-function ProductOne({ data, setDel }) {
-    const navigate = useNavigate();
-    const { category, id } = useParams();
-    const productId = data._id
 
-    const deleteProduct = () =>{
-        axios.post("http://localhost:9002/deleteProduct", { id: productId })
-            .then(res => {
-                alert(res.data.message)
-                setDel(false)
-                navigate(`/product/${category}/${id}`)
-            })
-    }
-
-    return (
-        <tr>
-            <td>{data.name}</td>
-            <td>{data.price}</td>
-            <td><div className="button-cat edit but" >Edit</div></td>
-            <td><div className="button-cat delete but" onClick={deleteProduct} >Delete</div></td>
-        </tr>
-    );
-}
 
 const Product = () => {
     const navigate = useNavigate();
@@ -38,6 +16,33 @@ const Product = () => {
         });
         setDel(true)
     }, [del]);
+
+
+    function ProductOne({ data, setDel }) {
+        // const navigate = useNavigate();
+        // const { category, id } = useParams();
+        const productId = data._id
+    
+        const deleteProduct = () =>{
+            axios.post("http://localhost:9002/deleteProduct", { id: productId })
+                .then(res => {
+                    alert(res.data.message)
+                    setDel(false)
+                    navigate(`/product/${category}/${id}`)
+                })
+        }
+    
+        return (
+            <tr>
+                <td>{data.name}</td>
+                <td>{data.price}</td>
+                <td><div className="button-cat edit but" onClick={() => navigate(`/updateProduct/${category}/${productId}`)} >Edit</div></td>
+                <td><div className="button-cat delete but" onClick={deleteProduct} >Delete</div></td>
+            </tr>
+        );
+    }
+
+
 
     const deleteCategory = () => {
         axios.post("http://localhost:9002/deleteCategory", { id: id })

@@ -10,6 +10,7 @@ import AddCategory from './components/add-category/addCategory';
 import UpdateCategory from './components/update-category/updateCategory';
 import Product from './components/product/product';
 import AddProduct from './components/add-product/addProduct';
+import UpdateProduct from './components/update-product/updateProduct';
 
 function App() {
   const [user, setLoginUser] = useState({})
@@ -37,6 +38,7 @@ function App() {
           <Route path='/updateCategory/:category/:id' element={<UpdateCategory />} />
           <Route path='/product/:category/:id' element={<Product />} />
           <Route path='/addProduct/:category/:id' element={<AddProduct />} />
+          <Route path='/updateProduct/:category/:id' element={<UpdateProduct />} />
         </Routes>
       </Router>
     </div>
