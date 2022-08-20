@@ -1,7 +1,21 @@
+# Inventory System
+
 ## Server
-- npm install
-- npm start
+```
+cd server
+npm install
+npm start
+```
 
 ## Client
-- npm install
-- npm start
+```
+cd client
+npm install
+npm start
+```
+
+## Tools
+- NodeJs
+- Express
+- ReactJs
+- MongoDb
