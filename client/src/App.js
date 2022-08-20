@@ -11,6 +11,7 @@ import UpdateCategory from './components/update-category/updateCategory';
 import Product from './components/product/product';
 import AddProduct from './components/add-product/addProduct';
 import UpdateProduct from './components/update-product/updateProduct';
+import ForgotPassword from './components/forgot-password/forgotPassword';
 
 function App() {
   const [user, setLoginUser] = useState({})
@@ -39,6 +40,7 @@ function App() {
           <Route path='/product/:category/:id' element={<Product />} />
           <Route path='/addProduct/:category/:id' element={<AddProduct />} />
           <Route path='/updateProduct/:category/:id' element={<UpdateProduct />} />
+          <Route path='/forgotPassword' element={<ForgotPassword user = {user}  />} />
         </Routes>
       </Router>
     </div>

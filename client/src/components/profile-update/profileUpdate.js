@@ -45,7 +45,7 @@ const ProfileUpdate = (props) => {
             <input type="password" name="newPassword" value={update.newPassword} placeholder="New Password" onChange={handleChange}></input>
             <div className="button" onClick={updateProfile} >Update</div>
             <div>or</div>
-            <div className="button" onClick={()=>navigate("/")}>Forgot password</div>
+            <div className="button" onClick={()=>navigate("/forgotPassword")}>Forgot password</div>
         </div>
     )
 }
