@@ -1,0 +1,95 @@
+.homepage {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.button {
+    background: #1877f2;
+    border: 1px solid #0c0c0c;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+
+.nav {
+    background-color: white;
+    font-size: 1.2rem;
+    height: 60px;
+    padding: 10px;
+    align-items: center;
+}
+
+.nav h1 {
+    float: left;
+    margin: 10px;
+    font-size: 2rem;
+}
+
+.nav div.button {
+    margin: 10px;
+    float: right;
+}
+
+.logout {
+    background: rgb(122, 120, 120);
+}
+
+
+.tabledata {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+table {
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px 1px grey;
+    background: white;
+    border: none;
+}
+
+td,
+th {
+    border: 1px solid #999;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+th {
+    background: darkslategrey;
+    color: white;
+    border-radius: 0;
+    top: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin: 40px;
+    font-size: 2rem;
+    color: darkred;
+}
+
+@media (max-width: 768px) {
+    .product {
+        grid-template-columns: auto auto;
+    }
+
+    .nav h1 {
+        font-size: 1.8rem;
+        align-items: center;
+    }
+}

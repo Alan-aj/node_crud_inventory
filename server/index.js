@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import "./db/models.js";
+import mongoose from "mongoose";
 import { User, Category, Product } from "./db/models.js";
 
 const app = express()
@@ -61,8 +62,8 @@ app.post("/updateProfile", (req, res) => {
 })
 
 app.post("/user", (req, res) => {
-    const {id} = req.body
-    User.findOne({_id: id}, function (err, data) {
+    const { userId } = req.body
+    User.findOne({ _id: userId }, function (err, data) {
         if (data) {
             // console.log(data)
             res.send(data)
@@ -70,7 +71,6 @@ app.post("/user", (req, res) => {
             console.log(err)
         }
     })
-
 })
 
 app.get("/category", (req, res) => {
@@ -85,8 +85,16 @@ app.get("/category", (req, res) => {
 
 })
 
-app.get("/product", (req, res) => {
-    res.send()
+app.post("/product", (req, res) => {
+    const {id} = req.body
+    Product.find({category:id}, function (err, docs) {
+        if (err){
+            console.log(err);
+        }
+        else{
+            res.send(docs)
+        }
+    })
 })
 
 app.post("/addCategory", (req, res) => {
@@ -111,7 +119,26 @@ app.post("/addCategory", (req, res) => {
 })
 
 app.post("/addProduct", (req, res) => {
-
+    const { name, price, id } = req.body
+        Product.findOne({ name: name }, (err, data) => {
+            if (data) {
+                res.send({ message: "Product already exits" })
+            } else {
+                // console.log(mongoose.Types.ObjectId(id))
+                const product = new Product({
+                    name,
+                    price,
+                    category: mongoose.Types.ObjectId(id)
+                })
+                product.save(err => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        res.send({ message: "Product added successfully" })
+                    }
+                })
+            }
+        })
 })
 
 app.post("/updateCategory", (req, res) => {

@@ -19,7 +19,7 @@ const Category = ({ id, categoryData, setDel }) => {
         <div className="category">
             <h1>{categoryData}</h1>
             <div className="row">
-                <div className="button-cat" onClick={() => console.log("click")}>Products</div>
+                <div className="button-cat" onClick={() => navigate(`/product/${categoryData}/${id}`)}>Products</div>
                 <div className="button-cat edit" onClick={() => navigate(`/updateCategory/${categoryData}/${id}`)}>Edit</div>
                 <div className="button-cat delete" onClick={deleteCategory}>Delete</div>
             </div>
