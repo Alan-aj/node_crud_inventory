@@ -28,6 +28,7 @@ const ProfileUpdate = (props) => {
             axios.post("http://localhost:9002/updateProfile", update)
                 .then(res => {
                     alert(res.data.message)
+                    props.setUpdate(true)
                     navigate("/")
                 })
         } else {

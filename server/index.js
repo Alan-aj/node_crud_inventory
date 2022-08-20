@@ -60,6 +60,19 @@ app.post("/updateProfile", (req, res) => {
         });
 })
 
+app.post("/user", (req, res) => {
+    const {id} = req.body
+    User.findOne({_id: id}, function (err, data) {
+        if (data) {
+            // console.log(data)
+            res.send(data)
+        } else {
+            console.log(err)
+        }
+    })
+
+})
+
 app.get("/category", (req, res) => {
     Category.find({}, function (err, data) {
         if (data) {

@@ -12,7 +12,6 @@ const Home = (props) => {
         axios.get("http://localhost:9002/category").then((response) => {
             setPost(response.data);
         });
-        console.log("run")
         setDel(true)
     }, [del]);
 
