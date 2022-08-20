@@ -161,7 +161,7 @@ app.post("/updateProduct", (req, res) => {
 
 app.post("/deleteCategory", (req, res) => {
     const { id } = req.body
-    Product.deleteMany({ _id: id })
+    Product.deleteMany({ category: id })
         .then(Category.deleteOne({ _id: id })
             .then(function () {
                 res.send({ message: "Category deleted" })
@@ -170,7 +170,16 @@ app.post("/deleteCategory", (req, res) => {
             })).catch(function (error) {
                 console.log(error);
             })
+})
 
+app.post("/deleteProduct", (req, res) => {
+    const {id} = req.body
+    Product.deleteOne({ _id: id})
+    .then(function () {
+        res.send({ message: "Product deleted" })
+    }).catch(function (error) {
+        console.log(error);
+    })
 })
 
 app.listen(9002, () => {
