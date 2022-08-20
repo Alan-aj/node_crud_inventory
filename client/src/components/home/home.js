@@ -16,11 +16,17 @@ const Home = (props) => {
         setDel(true)
     }, [del]);
 
+    const logOut = ()=>{
+        localStorage.removeItem("loginId")
+        // localStorage.clear()
+        props.setLoginid(null)
+    }
+
     return (
         <div className="homepage">
             <div className="nav">
                 <h1>Welcome {props.user.name}</h1>
-                <div className="button logout" onClick={() => props.setLoginUser({})}>Logout</div>
+                <div className="button logout" onClick={logOut}>Logout</div>
                 <div className="button updatecat" onClick={() => navigate("/profileUpdate")}>Update profile</div>
                 <div className="button" onClick={() => navigate("/addCategory")}>Add category</div>
             </div>
