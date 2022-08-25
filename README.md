@@ -1,16 +1,20 @@
 # Inventory System
 
+## Install
+```
+npm install
+connect mongodb
+```
+
 ## Server
 ```
 cd server
-npm install
 npm start
 ```
 
 ## Client
 ```
 cd client
-npm install
 npm start
 ```
 
